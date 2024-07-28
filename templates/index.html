@@ -52,21 +52,30 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
+        
+        .chat-history {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Chatbot Interface</h1>
+        <div class="chat-history">
+            {% for chat in chat_history %}
+                <p>User Input: {{ chat.user_input }}</p>
+                <p>Response: {{ chat.response }}</p>
+            {% endfor %}
+        </div>
         <form method="POST">
             <input type="text" id="user_input" name="user_input" placeholder="Type your message..." class="input-field">
             <button type="submit" class="submit-btn">Send</button>
         </form>
-        <div class="chat-window">
-            {% if user_input %}
-                <p>User Input: {{ user_input }}</p>
-                <p>Response: {{ response }}</p>
-            {% endif %}
-        </div>
     </div>
 </body>
 </html>
